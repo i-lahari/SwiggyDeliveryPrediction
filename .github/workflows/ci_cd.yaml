@@ -4,6 +4,7 @@ on: push
 
 jobs:
   CI-CD:
+    environment: prod   
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
