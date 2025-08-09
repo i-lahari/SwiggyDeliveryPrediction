@@ -1,22 +1,14 @@
 name: CI-CD
-permissions:
-  contents: read
+
 on: push
 
 jobs:
   CI-CD:
-    environment: prod   
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
-      - name: Load .env
-        run: |
-          set -a
-          source .env
-          set +a
-          echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
+    
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -67,6 +59,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
-      - name: WhoAmI (debug)
-        run: aws sts get-caller-identity
+
      
