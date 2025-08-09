@@ -27,4 +27,6 @@ stages:
     - src/features/data_preprocessing.py
     outs:
     - models/preprocessor.joblib
+    - data/processed/train.csv
+    - data/processed/test.csv
 
