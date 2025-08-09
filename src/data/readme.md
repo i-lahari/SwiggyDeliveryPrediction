@@ -1,3 +1,5 @@
+# Data Cleaning
+
 ## 1. Imports & Logger Setup
 Imports: Loads essential Python packages — numpy, pandas, Path from pathlib, and logging.
 
@@ -108,4 +110,91 @@ Logs “Data read successfully”.
 Runs perform_data_cleaning to clean & save CSV.
 
 Logs “Data cleaned and saved”.
+
+# Data Preparation
+
+## 1. Imports & Global Config
+Imports:
+
+pandas for data handling.
+
+train_test_split from sklearn for splitting datasets.
+
+yaml for reading configuration parameters.
+
+logging for progress and error logs.
+
+Path from pathlib for file path management.
+
+Global Variable:
+
+TARGET = "time_taken" → specifies the target column for modeling.
+
+Logger Setup:
+
+Creates a logger named "data_preparation" at INFO level.
+
+Configures a console log handler with timestamps, logger name, log level, and message.
+
+## 2. Function Definitions
+load_data(data_path)
+
+Reads a CSV file into a DataFrame.
+
+Logs an error if the file is not found.
+
+split_data(data, test_size, random_state)
+
+Splits the DataFrame into train and test sets based on given test_size and random_state.
+
+Returns (train_data, test_data).
+
+read_params(file_path)
+
+Reads a YAML file and returns its contents as a dictionary.
+
+save_data(data, save_path)
+
+Saves a DataFrame to CSV at the given path (no index).
+
+## 3. Main Script (if __name__ == "__main__")
+Set File Paths:
+
+Defines root_path → 3 levels above the script’s location.
+
+data_path → location of the cleaned Swiggy dataset (data/cleaned/swiggy_cleaned.csv).
+
+save_data_dir → folder for saving train/test splits (data/interim), created if it doesn’t exist.
+
+Defines file names and paths for train (train.csv) and test (test.csv) datasets.
+
+Sets params_file_path → path to params.yaml.
+
+Load Data:
+
+Calls load_data() to read cleaned CSV into a DataFrame.
+
+Logs "Data Loaded Successfully".
+
+Read Parameters:
+
+Reads params.yaml and extracts Data_Preparation section.
+
+Retrieves test_size and random_state values.
+
+Logs "parameters read successfully".
+
+Split Data:
+
+Uses split_data() to divide the dataset into train and test subsets.
+
+Logs "Dataset split into train and test data".
+
+Save Train & Test Sets:
+
+Iterates over (train_data, test_data) with their respective file paths.
+
+Calls save_data() to save each subset as CSV in data/interim/.
+
+Logs messages like "train data saved to location" and "test data saved to location".
 
