@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  data_cleaning:
+    cmd: python src/data/data_cleaning.py
+    deps:
+    - path: src/data/data_cleaning.py
+      hash: md5
+      md5: c83d4396390740a23b6eda9c88a9b317
+      size: 9262
+    outs:
+    - path: data/cleaned
+      hash: md5
+      md5: 5b76320f04f4713a4733b4df887c66e0.dir
+      size: 4463056
+      nfiles: 1
